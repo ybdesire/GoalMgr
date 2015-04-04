@@ -58,11 +58,28 @@ $("document").ready(function () {
             //increase goal count
             var newGoalSeq = parseInt(goalSeq) + 1;
             localStorage.setItem("goalCount", String(newGoalSeq));
-
+            //update goal array
+            goalArrayMgr(liId, true);
             $('ul').listview('refresh');
 
         });
+    }
 
+    //manage goal status by goalArray object
+    //e.g. goalArray = {"goal1":true,"goal2":false,"goal3":true,"goal4":true};
+    //which means goal2 have been deleted. But goal1, goal3, goal3 are exists at local storage.
+    function goalArrayMgr(goalId, exist)
+    {
+        if (window.localStorage.getItem("goalArray") === null)//no goals
+        {
+            var goalArray = {};
+        }
+        else
+        {
+            var goalArray = JSON.parse(window.localStorage.getItem("goalArray"));//convert string to obj, since local storage are string-only
+        }
+        goalArray[goalId] = exist;
+        window.localStorage.setItem("goalArray", JSON.stringify(goalArray));//convert obj to string and store into local storage
     }
 
     function removeFooter()
