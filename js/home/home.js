@@ -41,16 +41,19 @@ $("document").ready(function () {
         //add footer navbar click function
         $("#addGoal").click(function () {
             var goalSeq = localStorage.getItem("goalCount");
-            var liId = "goal" + goalSeq;
-            var goalTitle = "goal" + goalSeq;
-            var goalTitleId = "goal" + goalSeq + "Title";
-            var goalCompleteId = "goal" + goalSeq + "Complete";
-            var goalComplete0 = "0% completed";
 
-            var listHtml = "<li id='" + liId + "'>" +
+            var goalObj = {
+                goalId: "goal" + goalSeq,
+                goalTitle:"goal" + goalSeq,
+                goalTitleId:"goal" + goalSeq + "Title",
+                goalCompleteId:"goal" + goalSeq + "Complete",
+                goalComplete: "0% completed"
+            };
+
+            var listHtml = "<li id='" + goalObj.goalId + "'>" +
                                 "<a href='#'>" +
-                                    "<h2 id='" + goalTitleId + "'>" + goalTitle + "</h2>" +
-                                    "<p id='" + goalCompleteId + "'>" + goalComplete0 + "</p>" +
+                                    "<h2 id='" + goalObj.goalTitleId + "'>" + goalObj.goalTitle + "</h2>" +
+                                    "<p id='" + goalObj.goalCompleteId + "'>" + goalObj.goalComplete + "</p>" +
                                 "</a>" +
                             "</li>";
 
@@ -59,9 +62,11 @@ $("document").ready(function () {
             var newGoalSeq = parseInt(goalSeq) + 1;
             localStorage.setItem("goalCount", String(newGoalSeq));
             //update goal array
-            goalArrayMgr(liId, true);
+            goalArrayMgr(goalObj.goalId, true);
+            //save goal property into local storage
+            saveObjToLocalStorage(goalObj.goalId, goalObj);
+            //update goal list
             $('ul').listview('refresh');
-
         });
     }
 
@@ -76,10 +81,10 @@ $("document").ready(function () {
         }
         else
         {
-            var goalArray = JSON.parse(window.localStorage.getItem("goalArray"));//convert string to obj, since local storage are string-only
+            var goalArray = loadOBJFromLocalStorage("goalArray");
         }
         goalArray[goalId] = exist;
-        window.localStorage.setItem("goalArray", JSON.stringify(goalArray));//convert obj to string and store into local storage
+        saveObjToLocalStorage("goalArray", goalArray);
     }
 
     function removeFooter()
@@ -87,6 +92,16 @@ $("document").ready(function () {
         $("#footerDiv").remove();
     }
 
+    //convert object to string and store the obj into local storage
+    function saveObjToLocalStorage(key, obj)
+    {
+        window.localStorage.setItem(key, JSON.stringify(obj));
+    }
+    //convert string to object, since local storage are string-only
+    function loadOBJFromLocalStorage(key)
+    {
+        return JSON.parse(window.localStorage.getItem(key));
+    }
 
     function loadGoalsFromLocalStorage()
     {
