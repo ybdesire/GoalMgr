@@ -103,8 +103,28 @@ $("document").ready(function () {
         return JSON.parse(window.localStorage.getItem(key));
     }
 
+    //load all goals from local storage and display them at home page, when page init
     function loadGoalsFromLocalStorage()
     {
-
+        var goalArray = loadOBJFromLocalStorage("goalArray");
+        if(goalArray!==null)
+        {
+            for (var goal in goalArray)//goalArray is the goal exist status object
+            {
+                if (goalArray[goal] === true)//if the goal still exist
+                {
+                    var goalObj = loadOBJFromLocalStorage(goal);
+                    var listHtml = "<li id='" + goalObj.goalId + "'>" +
+                        "<a href='#'>" +
+                            "<h2 id='" + goalObj.goalTitleId + "'>" + goalObj.goalTitle + "</h2>" +
+                            "<p id='" + goalObj.goalCompleteId + "'>" + goalObj.goalComplete + "</p>" +
+                        "</a>" +
+                    "</li>";
+                    $("#goalsList").append(listHtml);
+                }
+            }
+            //update goal list
+            $('ul').listview('refresh');
+        }
     }
 });
