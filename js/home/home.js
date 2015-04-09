@@ -25,6 +25,15 @@ $("document").ready(function () {
         
     });
 
+    //event handle for list view click
+    $("#goalsList").delegate("li", "click", function () {
+        console.log($(this).attr("id"));
+        //load goal setting page
+
+        //load info
+
+    });
+
     function addFooter()
     {
         $("#homePageFooter").append("<div id='footerDiv'></div>");//Add div to hold navbar
