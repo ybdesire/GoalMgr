@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,8 +8,6 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" />
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
-
-    <script type="text/javascript" src="js/home/home.js"></script>
 </head>
 
 <body>
@@ -17,10 +15,27 @@
         <div data-role="header" data-position="fixed">
             <h3 id="goalHeader">Goal</h3>
             <a href="home.html" data-icon="back" data-role="button" class="ui-btn-left">Back</a>
-            <a href="home.html" data-icon="check" data-role="button" class="ui-btn-right">Save</a>
+            <a href="#" data-icon="gear" data-role="button" class="ui-btn-right">Edit</a>
         </div>
 
         <div data-role="content">
+            <form>
+                <label for="goal-title">Goal Title:</label>
+                <input type="text" id="goal-title" />
+
+                <label for="goal-detail">Details:</label>
+                <textarea name="goal-detail" id="goal-detail"></textarea>
+
+                <label for="goal-start-date">Start Date:</label>
+                <input type="date" data-clear-btn="true" id="goal-start-date" value="" />
+
+                <label for="goal-end-date">End Date:</label>
+                <input type="date" data-clear-btn="true" id="goal-end-date" value="" />
+
+                <input type="range" id="goal-progress" data-highlight="true" min="0" max="100" value="50" />
+            </form>
+            <button class="ui-btn" id="goal-save-btn">Save</button>
+
         </div>
     </div>
 </body>
