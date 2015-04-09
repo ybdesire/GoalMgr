@@ -17,7 +17,7 @@
         </div>
 
         <div data-role="content">
-            <a href="home.html">Press to Continue</a>
+            <a href="#" id="continue">Press to Continue</a>
         </div>
 
         <div data-role="footer" data-position="fixed">
@@ -28,9 +28,11 @@
 
 <script type="text/javascript">
     $("document").ready(function () {
-        //$("p").html("lalalalalallalall");
+        $("#continue").click(function () {
+            document.location = "home.html";
+        });
+        
     });
-
 </script>
 
 </html>

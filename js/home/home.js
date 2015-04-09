@@ -1,15 +1,14 @@
 $("document").ready(function () {
     //init home page
-    (function () {
-        if(window.localStorage.getItem("goalCount")===null)//no goals
+    function homeInit() {
+        if (window.localStorage.getItem("goalCount") === null)//no goals
         {
             window.localStorage.setItem("goalCount", "0");
         }
-        else if (parseInt(window.localStorage.getItem("goalCount"))>0)
-        {
+        else if (parseInt(window.localStorage.getItem("goalCount")) > 0) {
             loadGoalsFromLocalStorage();
         }
-    })();
+    };
 
     $("#editBtn").click(function () {
         if ($("#editBtn").html() === "Edit")
@@ -29,7 +28,8 @@ $("document").ready(function () {
     $("#goalsList").delegate("li", "click", function () {
         console.log($(this).attr("id"));
         //load goal setting page
-
+        window.location = "goalDetail.html";
+        $("#goalHeader").value = $(this).attr("id");
         //load info
 
     });
