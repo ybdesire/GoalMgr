@@ -14,7 +14,7 @@
     <div data-role="page" class="ui-page-theme-a">
         <div data-role="header" data-position="fixed">
             <h3 id="goalHeader">Goal</h3>
-            <a href="home.html" data-icon="back" data-role="button" class="ui-btn-left">Back</a>
+            <a href="#" data-icon="back" data-role="button" class="ui-btn-left" id="backToHomeBtn">Back</a>
             <a href="#" data-icon="gear" data-role="button" class="ui-btn-right">Edit</a>
         </div>
 
@@ -32,11 +32,20 @@
                 <label for="goal-end-date">End Date:</label>
                 <input type="date" data-clear-btn="true" id="goal-end-date" value="" />
 
-                <input type="range" id="goal-progress" data-highlight="true" min="0" max="100" value="50" />
+                <input type="range" id="goal-progress" data-highlight="true" min="0" max="100" value="0" />
             </form>
             <button class="ui-btn" id="goal-save-btn">Save</button>
+            <button class="ui-btn" id="goal-remove-btn" style="color:red">Remove Goal</button>
 
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#backToHomeBtn").click(function () {
+            document.location = "home.html";
+        });
+    });
+</script>
+
 </html>
