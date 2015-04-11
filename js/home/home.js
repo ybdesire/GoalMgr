@@ -21,13 +21,15 @@ function editBtnClickEvent() {
 }
 
 //event handler for list view click
-function goalListClickEvent(){
-    console.log($(this).attr("id"));
+function goalListClickEvent(listItem){
+    var clickedGoal = $(listItem).attr("id");
+    console.log(clickedGoal);
+    //save the clicked goal id, let other page know which page has been clicked.
+    window.localStorage.setItem("currentEditGoal", clickedGoal);
     //load goal setting page
     window.location = "goalDetail.html";
     $("#goalHeader").value = $(this).attr("id");
     //load info
-
 }
 
 function addFooter(){
