@@ -1,4 +1,5 @@
 function initGoalDetailPage() {
+    loadGoalSetting();
     disablePageEdit();
 }
 
@@ -45,5 +46,38 @@ function removeGoal(){
     else {
         console.log("ERROR:cannot load 'currentEditGoal' from local storage.");
     }
+}
 
+//save the settings into local storage
+function saveGoalSetting()
+{
+    var currentGoal = window.localStorage.getItem("currentEditGoal");
+    if (currentGoal !== null) {
+        var goalObj = loadOBJFromLocalStorage(currentGoal);
+        goalObj.goalTitle = $("#goalTitle").val();
+        goalObj.goalDscrpt = $("#goalDetail").val();
+        goalObj.goalStartDate = $("#goalStartDate").val();
+        goalObj.goalEndDate = $("#goalEndDate").val();
+        goalObj.goalProgress = $("#goalProgress").val();
+        goalObj.goalComplete = $("#goalProgress").val() + "% completed.";
+        //save the goal settings.
+        saveObjToLocalStorage(currentGoal, goalObj);
+        goalObj = null;
+    }
+}
+
+//load the settings at local storage to UI
+function loadGoalSetting()
+{
+    var currentGoal = window.localStorage.getItem("currentEditGoal");
+    if (currentGoal !== null) {
+        var goalObj = loadOBJFromLocalStorage(currentGoal);
+        $("#goalTitle").val(goalObj.goalTitle);
+        $("#goalDetail").val(goalObj.goalDscrpt);
+        $("#goalStartDate").val(goalObj.goalStartDate);
+        $("#goalEndDate").val(goalObj.goalEndDate );
+        $("#goalProgress").val(goalObj.goalProgress );
+        
+        goalObj = null;
+    }
 }

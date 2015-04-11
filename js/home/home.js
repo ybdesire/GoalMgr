@@ -28,8 +28,7 @@ function goalListClickEvent(listItem){
     window.localStorage.setItem("currentEditGoal", clickedGoal);
     //load goal setting page
     window.location = "goalDetail.html";
-    $("#goalHeader").value = $(this).attr("id");
-    //load info
+    
 }
 
 function addFooter(){
