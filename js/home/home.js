@@ -1,7 +1,6 @@
 //init home page
 function homeInit() {
-    if (window.localStorage.getItem("goalCount") === null)//no goals
-    {
+    if (window.localStorage.getItem("goalCount") === null){//no goals
         window.localStorage.setItem("goalCount", "0");
     }
     else if (parseInt(window.localStorage.getItem("goalCount")) > 0) {
@@ -10,13 +9,11 @@ function homeInit() {
 };
 
 function editBtnClickEvent() {
-    if ($("#editBtn").html() === "Edit")
-    {
+    if ($("#editBtn").html() === "Edit"){
         $("#editBtn").html("Done");
         addFooter();
     }
-    else
-    {
+    else{
         $("#editBtn").html("Edit");
         removeFooter();
     }
@@ -24,8 +21,7 @@ function editBtnClickEvent() {
 }
 
 //event handler for list view click
-function goalListClickEvent()
-{
+function goalListClickEvent(){
     console.log($(this).attr("id"));
     //load goal setting page
     window.location = "goalDetail.html";
@@ -34,8 +30,7 @@ function goalListClickEvent()
 
 }
 
-function addFooter()
-{
+function addFooter(){
     $("#homePageFooter").append("<div id='footerDiv'></div>");//Add div to hold navbar
     //add navbar to footer
     $("#footerDiv").append(" \
@@ -81,46 +76,36 @@ function addFooter()
 //manage goal status by goalArray object
 //e.g. goalArray = {"goal1":true,"goal2":false,"goal3":true,"goal4":true};
 //which means goal2 have been deleted. But goal1, goal3, goal3 are exists at local storage.
-function goalArrayMgr(goalId, exist)
-{
-    if (window.localStorage.getItem("goalArray") === null)//no goals
-    {
+function goalArrayMgr(goalId, exist){
+    if (window.localStorage.getItem("goalArray") === null){//no goals
         var goalArray = {};
     }
-    else
-    {
+    else{
         var goalArray = loadOBJFromLocalStorage("goalArray");
     }
     goalArray[goalId] = exist;
     saveObjToLocalStorage("goalArray", goalArray);
 }
 
-function removeFooter()
-{
+function removeFooter(){
     $("#footerDiv").remove();
 }
 
 //convert object to string and store the obj into local storage
-function saveObjToLocalStorage(key, obj)
-{
+function saveObjToLocalStorage(key, obj){
     window.localStorage.setItem(key, JSON.stringify(obj));
 }
 //convert string to object, since local storage are string-only
-function loadOBJFromLocalStorage(key)
-{
+function loadOBJFromLocalStorage(key){
     return JSON.parse(window.localStorage.getItem(key));
 }
 
 //load all goals from local storage and display them at home page, when page init
-function loadGoalsFromLocalStorage()
-{
+function loadGoalsFromLocalStorage(){
     var goalArray = loadOBJFromLocalStorage("goalArray");
-    if(goalArray!==null)
-    {
-        for (var goal in goalArray)//goalArray is the goal exist status object
-        {
-            if (goalArray[goal] === true)//if the goal still exist
-            {
+    if(goalArray!==null){
+        for (var goal in goalArray){//goalArray is the goal exist status object
+            if (goalArray[goal] === true){//if the goal still exist
                 var goalObj = loadOBJFromLocalStorage(goal);
                 var listHtml = "<li id='" + goalObj.goalId + "'>" +
                     "<a href='#'>" +
