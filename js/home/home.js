@@ -41,7 +41,6 @@ function addFooter()
     $("#footerDiv").append(" \
                     <div data-role='navbar'>    \
                         <ul>                    \
-                            <li><a href='#' data-icon='minus' id='rmGoal'></a></li>            \
                             <li><a href='#' data-icon='plus' id='addGoal'></a></li>             \
                         </ul>                                                                   \
                     </div>");

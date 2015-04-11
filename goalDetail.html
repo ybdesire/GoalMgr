@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" />
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+
+    <script type="text/javascript" src="js/goalDetail/goalDetail.js"></script>
 </head>
 
 <body>
@@ -15,36 +17,43 @@
         <div data-role="header" data-position="fixed">
             <h3 id="goalHeader">Goal</h3>
             <a href="#" data-icon="back" data-role="button" class="ui-btn-left" id="backToHomeBtn">Back</a>
-            <a href="#" data-icon="gear" data-role="button" class="ui-btn-right">Edit</a>
+            <a href="#" data-icon="gear" data-role="button" class="ui-btn-right" id="editBtn">Edit</a>
         </div>
 
         <div data-role="content">
             <form>
-                <label for="goal-title">Goal Title:</label>
-                <input type="text" id="goal-title" />
+                <label for="goalTitle">Goal Title:</label>
+                <input type="text" id="goalTitle" />
 
-                <label for="goal-detail">Details:</label>
-                <textarea name="goal-detail" id="goal-detail"></textarea>
+                <label for="goalDetail">Details:</label>
+                <textarea id="goalDetail"></textarea>
 
-                <label for="goal-start-date">Start Date:</label>
-                <input type="date" data-clear-btn="true" id="goal-start-date" value="" />
+                <label for="goalStartDate">Start Date:</label>
+                <input type="date" id="goalStartDate" value="" />
 
-                <label for="goal-end-date">End Date:</label>
-                <input type="date" data-clear-btn="true" id="goal-end-date" value="" />
+                <label for="goalEndDate">End Date:</label>
+                <input type="date" id="goalEndDate" value="" />
 
-                <input type="range" id="goal-progress" data-highlight="true" min="0" max="100" value="0" />
+                <input type="range" id="goalProgress" data-highlight="true" min="0" max="100" value="0" />
             </form>
-            <button class="ui-btn" id="goal-save-btn">Save</button>
-            <button class="ui-btn" id="goal-remove-btn" style="color:red">Remove Goal</button>
+            <button class="ui-btn" id="goalSaveBtn">Save</button>
+            <button class="ui-btn" id="goalRemoveBtn" style="color:red">Remove Goal</button>
 
         </div>
     </div>
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
+        initGoalDetailPage();
+
         $("#backToHomeBtn").click(function () {
             document.location = "home.html";
         });
+
+        $("#editBtn").click(function () {
+            editBtnEvent();
+        });
+       
     });
 </script>
 
