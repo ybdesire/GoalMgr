@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" />
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+
+    <script type="text/javascript" src="js/home/home.js"></script>
     
 </head>
 
@@ -40,10 +42,19 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="js/home/home.js">
+<script type="text/javascript">
 
     $("document").ready(function () {
         homeInit();
+
+        $("#editBtn").click(function () {
+            editBtnClickEvent();
+        });
+
+        $("#goalsList").delegate("li", "click", function () {
+            goalListClickEvent();
+        });
+
     });
 </script>
 
