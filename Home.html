@@ -8,8 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" />
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
-    
+
     <script type="text/javascript" src="js/home/home.js"></script>
+    
 </head>
 
 <body>
@@ -22,23 +23,26 @@
         <div data-role="content">
             <ul data-role="listview" data-inset="true" id="goalsList">
             </ul>
-            <h1>contentaaa1</h1>
-            <h1>contentaaa2</h1>
-            <h1>contentaaa3</h1>
-            <h1>contentaaa4</h1>
-            <h1>contentaaa5</h1>
-            <h1>contentaaa6</h1>
-            <h1>contentaaa7</h1>
-            <h1>contentaaa8</h1>
-            <h1>contentaaa9</h1>
-            <h1>contentaaa10</h1>
-            <h1>contentaaa11</h1>
-            <h1>contentaaa12</h1>
-            <h1>contentaaa13</h1>
         </div>
 
         <div data-role="footer" id="homePageFooter" data-position="fixed">
         </div>
     </div>
 </body>
+<script type="text/javascript">
+
+    $("document").ready(function () {
+        homeInit();
+
+        $("#editBtn").click(function () {
+            editBtnClickEvent();
+        });
+
+        $("#goalsList").delegate("li", "click", function () {
+            goalListClickEvent(this);
+        });
+
+    });
+</script>
+
 </html>

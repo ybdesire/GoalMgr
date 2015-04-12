@@ -13,24 +13,26 @@
 <body>
     <div data-role="page" data-theme="b">
         <div data-role="header">
-            <p>Goal Management</p>
+            <h1>Goal Management</h1>
         </div>
 
         <div data-role="content">
-            <a href="home.html">Press to Continue</a>
+            <a href="#" id="continue">Press here to Continue</a>
         </div>
 
         <div data-role="footer" data-position="fixed">
-            <p>Designed by Bin Yin</p>
+            <h3>Designed by Bin Yin</h3>
         </div>
     </div>
 </body>
 
 <script type="text/javascript">
     $("document").ready(function () {
-        //$("p").html("lalalalalallalall");
+        $("#continue").click(function () {
+            document.location = "home.html";
+        });
+        
     });
-
 </script>
 
 </html>
