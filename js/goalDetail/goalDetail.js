@@ -84,6 +84,7 @@ function loadGoalSetting()
         $("#goalDetail").val(goalObj.goalDscrpt);
         $("#goalStartDate").val(goalObj.goalStartDate);
         $("#goalEndDate").val(goalObj.goalEndDate );
-        $("#goalProgress").val(goalObj.goalProgress );
+        $("#goalProgress").val(goalObj.goalProgress);
+        $("#goalProgress").slider("refresh");
     }
 }
