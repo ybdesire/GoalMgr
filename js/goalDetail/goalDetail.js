@@ -62,6 +62,15 @@ function saveGoalSetting()
         goalObj.goalComplete = $("#goalProgress").val() + "% completed.";
         //save the goal settings.
         saveObjToLocalStorage(currentGoal, goalObj);
+        //pop up setting ok message.
+        var interval = setInterval(function () {
+            $('#dialog').popup('open', { history: false });
+            var intervalClose = setInterval(function () {
+                $('#dialog').popup('close');
+                clearInterval(intervalClose);
+            }, 1000);
+            clearInterval(interval);
+        }, 1);
     }
 }
 
