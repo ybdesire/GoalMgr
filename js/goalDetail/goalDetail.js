@@ -64,9 +64,9 @@ function saveGoalSetting()
         saveObjToLocalStorage(currentGoal, goalObj);
         //pop up setting ok message.
         var interval = setInterval(function () {
-            $('#dialog').popup('open', { history: false });
+            $('#saveOkDialog').popup('open', { history: false });
             var intervalClose = setInterval(function () {
-                $('#dialog').popup('close');
+                $('#saveOkDialog').popup('close');
                 clearInterval(intervalClose);
             }, 1000);
             clearInterval(interval);
