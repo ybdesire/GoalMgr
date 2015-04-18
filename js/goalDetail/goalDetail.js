@@ -62,7 +62,6 @@ function saveGoalSetting()
         goalObj.goalComplete = $("#goalProgress").val() + "% completed.";
         //save the goal settings.
         saveObjToLocalStorage(currentGoal, goalObj);
-        goalObj = null;
     }
 }
 
@@ -77,7 +76,5 @@ function loadGoalSetting()
         $("#goalStartDate").val(goalObj.goalStartDate);
         $("#goalEndDate").val(goalObj.goalEndDate );
         $("#goalProgress").val(goalObj.goalProgress );
-        
-        goalObj = null;
     }
 }
