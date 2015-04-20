@@ -1,4 +1,4 @@
-function initGoalDetailPage() {
+﻿function initGoalDetailPage() {
     loadGoalSetting();
     disablePageEdit();
 }
@@ -82,8 +82,9 @@ function loadGoalSetting()
         var goalObj = loadOBJFromLocalStorage(currentGoal);
         $("#goalTitle").val(goalObj.goalTitle);
         $("#goalDetail").val(goalObj.goalDscrpt);
+        $("#goalDetail").trigger('keyup');//auto height for textarea element
         $("#goalStartDate").val(goalObj.goalStartDate);
-        $("#goalEndDate").val(goalObj.goalEndDate );
+        $("#goalEndDate").val(goalObj.goalEndDate);
         $("#goalProgress").val(goalObj.goalProgress);
         $("#goalProgress").slider("refresh");
     }
