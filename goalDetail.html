@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Goal Details</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!--for iOS-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /><!--viewpoint config, page width is device width. initial scale means the page don't boom or shrink-->
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" />
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+
+    <script type="text/javascript" src="js/goalDetail/goalDetail.js"></script>
+</head>
+
+<body>
+    <div data-role="page" class="ui-page-theme-a">
+        <div data-role="header" data-position="fixed">
+            <h3 id="goalHeader">Goal</h3>
+            <a href="#" data-icon="back" data-role="button" class="ui-btn-left" id="backToHomeBtn">Back</a>
+            <a href="#" data-icon="gear" data-role="button" class="ui-btn-right" id="editBtn">Edit</a>
+        </div>
+
+        <div data-role="content">
+            <form>
+                <label for="goalTitle">Goal Title:</label>
+                <input type="text" id="goalTitle" />
+
+                <label for="goalDetail">Details:</label>
+                <textarea id="goalDetail"></textarea>
+
+                <label for="goalStartDate">Start Date:</label>
+                <input type="date" id="goalStartDate" value="" />
+
+                <label for="goalEndDate">End Date:</label>
+                <input type="date" id="goalEndDate" value="" />
+
+                <input type="range" id="goalProgress" data-highlight="true" min="0" max="100" value="0" />
+            </form>
+            <button class="ui-btn" id="goalSaveBtn">Save</button>
+            <button class="ui-btn" id="goalRemoveBtn" style="color:red">Remove Goal</button>
+
+            <div id="saveOkDialog" data-role="popup" data-transition="fade" data-position-to="#position-header">
+                <div data-role="header">Saved</div>
+            </div>
+
+        </div>
+    </div>
+    <div data-role="dialog" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+        <div data-role="header" data-theme="a">
+            <h1>Remove Goal?</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <h3 class="ui-title">Are you sure you want to remove this Goal?</h3>
+            <p>This action cannot be undone.</p>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow" id="removeMakeSureBtn">Remove</a>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        initGoalDetailPage();
+
+        $("#backToHomeBtn").click(function () {
+            document.location = "home.html";
+        });
+
+        $("#editBtn").click(function () {
+            editBtnEvent();
+        });
+
+        $("#goalRemoveBtn").click(function () {
+            $.mobile.changePage("#popupDialog", "fade", true, true);
+            $("#removeMakeSureBtn").click(function () {
+                removeGoal();
+                window.location = "home.html";
+            });
+        });
+
+        $("#goalSaveBtn").click(function () {
+            saveGoalSetting();
+        });
+       
+    });
+</script>
+
+</html>
